@@ -1,17 +1,34 @@
 <?php
 
 require 'functions.php';
+//require 'router.php';
+require 'Database.php';
 
-// Connect to the MySQL database.
-$dsn = "mysql:host=localhost;port=3306;dbname=budget-tracker;user=root;password=root;charset=utf8mb4";
+$db = new Database();
+$transactions = $db->query("select * from transactions")->fetchAll(PDO::FETCH_ASSOC);
 
-$pdo = new PDO($dsn);
-$statement = $pdo->prepare("select * from transactions where id = 1");
-$statement->execute();
-$transactions = $statement->fetch(PDO::FETCH_ASSOC);
-echo "<li>" . $transactions['id'] . "</li>";
-echo "<li>" . $transactions['amount'] . " €" . "</li>";
-echo "<li>" . $transactions['date'] . "</li>";
-echo "<li>" . $transactions['account'] . "</li>";
-echo "<li>" . $transactions['type'] . "</li>";
-echo "<li>" . $transactions['note'] . "</li>";
+dd($transactions);
+
+// OUTPUT
+
+    // array(1) {
+    //     [0]=>
+    //     array(8) {
+    //       ["id"]=>
+    //       int(1)
+    //       ["amount"]=>
+    //       float(10)
+    //       ["date"]=>
+    //       string(10) "2024-10-07"
+    //       ["account"]=>
+    //       string(8) "contanti"
+    //       ["type"]=>
+    //       string(6) "uscita"
+    //       ["label_id"]=>
+    //       int(1)
+    //       ["category_id"]=>
+    //       int(1)
+    //       ["note"]=>
+    //       string(5) "Pizza"
+    //     }
+    //   }
