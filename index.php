@@ -1,13 +1,15 @@
 <?php
 
 require 'functions.php';
-//require 'router.php';
+require 'router.php';
 require 'Database.php';
 
-$db = new Database();
-$transactions = $db->query("select * from transactions")->fetchAll(PDO::FETCH_ASSOC);
+$config = require('config.php');
+$db = new Database($config['database']);
 
-dd($transactions);
+$transactions = $db->query("select * from transactions")->fetchAll();
+
+// dd($transactions);
 
 // OUTPUT
 
