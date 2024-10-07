@@ -1,0 +1,20 @@
+# .env or config
+.env
+config.php
+
+# backup & cache
+*.log
+*.cache
+*.bak
+*.tmp
+
+# Composer
+/vendor/
+
+# IDE
+/.idea/
+/.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
